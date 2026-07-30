@@ -1,0 +1,39 @@
+This solution meets the goal. The Templates blade in the Azure portal enables you to store JavaScript
+Object Notation (JSON) documents that automate Azure resource deployment. In this case, to
+automate the deployment of 20 additional Linux VMs based on VM1's configuration, you can use an
+Azure Resource Manager (ARM) template. Here's a step-by-step guide:
+
+1. Export VM1's Configuration: You should go to the Azure portal, navigate to RG1 and select VM1. Click
+on "Export template" to get the ARM template for VM1.
+2. Modify the ARM Template: You should download the exported template. Open the template file in a
+text editor or an Integrated Development Environment (IDE). Identify the parameters section and
+add parameters for the new VMs (e.g., VM names, IP addresses).
+3. Create a Parameter File: Create a new JSON file for parameters. Define the parameters for each of
+the 20 new VMs. This includes VM names, sizes, and other configurations.
+4. Deploy the Template: Use Azure CLI or Azure PowerShell to deploy the template with the parameter
+file. Here's an example of how you can deploy the template using Azure CLI: az deployment group
+create -- resource-group RG1 -- template-file path/to/your/template. json --
+parameters @path/to/your/parameters. json
+5. Automate the Deployment: You can automate this process further by creating a script that updates
+the parameter file and triggers the deployment. Here is a simple example using a shell script:
+# ! /bin/bash
+
+RESOURCE GROUP="RG1"
+
+TEMPLATE FILE="path/to/your/template. json"
+PARAMETERS FILE="path/to/your/parameters. json"
+
+for i in {1 .. 20}
+
+do
+
+az deployment group create \
+
+-- resource-group $RESOURCE GROUP
+-- template-file $TEMPLATE FILE
+
+-- parameters @$ {PARAMETERS FILE}
+
+done
+
+This script will loop through and deploy 20 VMs based on the template and parameters you have
