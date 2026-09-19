@@ -14,4 +14,7 @@ Or
 type: microsoft.network/virtualnetworks 
 website: /azure/templates/microsoft.network/virtualnetworks 
 
+https://docs.azure.cn/en-us/azure-resource-manager/bicep/user-defined-functions
+
+https://docs.azure.cn/en-us/azure-resource-manager/bicep/bicep-functions
 
