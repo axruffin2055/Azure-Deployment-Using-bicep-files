@@ -13,7 +13,7 @@ URL on microsoft.network resource type: /azure/templates/microsoft.network/netwo
 
 Another example:
 
-Type: microsoft.network/virtualnetworks 
+Type: microsoft.network/virtualnetworks   
 Resource type URL: /azure/templates/microsoft.network/virtualnetworks 
 
 Use decorators 
