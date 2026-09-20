@@ -7,7 +7,7 @@ If you know the resource type, you can go directly to it with the following URL 
 Resource type reference: Gain templates on resources for your Bicep files:
 https://learn.microsoft.com/en-us/azure/governance/resource-graph/reference/supported-tables-resources#resources
 
-Use resource type info and go directly to that resource type and it's property values.
+Use resource type info and go directly to that resource type and it's property values.  
 Resource type example: microsoft.network/networkinterfaces 
 URL on microsoft.network resource type: /azure/templates/microsoft.network/networkinterfaces
 
