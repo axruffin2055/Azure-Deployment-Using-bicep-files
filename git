@@ -1,0 +1,6 @@
+List commands: git  
+Change user name: git config --global user.name "My name here"  
+Change user email: git config --global user.email "example.biz@yahoo.com"  
+Show global settings: git config --edit --global  
+
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\devenv.exe"
