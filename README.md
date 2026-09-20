@@ -16,9 +16,9 @@ Another example:
 Type: microsoft.network/virtualnetworks   
 Resource type URL: /azure/templates/microsoft.network/virtualnetworks 
 
-Use decorators 
-https://docs.azure.cn/en-us/azure-resource-manager/bicep/user-defined-functions  
-Example: @description
+Use decorators  
+Example: @description()  
+https://docs.azure.cn/en-us/azure-resource-manager/bicep/user-defined-functions    
 
 Bicep functions: https://docs.azure.cn/en-us/azure-resource-manager/bicep/bicep-functions
 
