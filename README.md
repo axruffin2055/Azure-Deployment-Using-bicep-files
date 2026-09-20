@@ -8,7 +8,7 @@ Resource type reference: Gain templates on resources for your Bicep files:
 https://learn.microsoft.com/en-us/azure/governance/resource-graph/reference/supported-tables-resources#resources
 
 Use resource type info and go directly to that resource type and it's property values.  
-Resource type example: microsoft.network/networkinterfaces 
+Resource type example: microsoft.network/networkinterfaces   
 URL on microsoft.network resource type: /azure/templates/microsoft.network/networkinterfaces
 
 Another example:
