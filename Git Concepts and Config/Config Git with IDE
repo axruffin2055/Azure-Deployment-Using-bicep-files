@@ -1,19 +1,31 @@
 
 Configure git with IDE: (I am using Visual Studio Community) 
 
+On your computer or labtop.
+Install Git using CLI:
+winget search git
+winget install Git.Git
+
+Install Visual Studio:
+winget search "Visual Studio"
+winget install Microsoft.VisualStudio.2022.Community 
+Or
+winget install Microsoft.VisualStudioCode 
+
+On your computer or labtop.
 Change Environment Variable: Click Windows Icon and search Environment variable.  
 Find path for IDE: Right click on icon-> Properties -> Target  
 Target: "C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\devenv.exe"  
 Add to user path: C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\
 Tell git to go to your IDE path and open that IDE or text editor.
+
+Open Git-Bash.
 If your using VS code: git config --global core.editor "code --wait  --new-window" 
 If your using VS Community: 
 git config --global core.editor "cmd.exe //C start //wait \"\" 
 \"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\devenv.exe\" /Edit"
 
-
-
-
+Open Git-Bash
 git: List commands.  
 git config --global user.name "My name here" : Change user name. 
 git config --global user.email "example.biz@yahoo.com" : Change user email 
@@ -23,4 +35,4 @@ git clone : Download a project from remote.
 git add : Prepare a file to staging.
 git commit : Commit a file to the repo. 
 
-mkdir "c:\"
+
