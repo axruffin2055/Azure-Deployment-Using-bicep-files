@@ -1,0 +1,43 @@
+$ git -h -g
+The Git concept guides are:
+   core-tutorial    A Git core tutorial for developers
+   credentials      Providing usernames and passwords to Git
+   cvs-migration    Git for CVS users
+   diffcore         Tweaking diff output
+   everyday         A useful minimum set of commands for Everyday Git
+   faq              Frequently asked questions about using Git
+   glossary         A Git Glossary
+   namespaces       Git namespaces
+   remote-helpers   Helper programs to interact with remote repositories
+   submodules       Mounting one repository inside another
+   tutorial         A tutorial introduction to Git
+   tutorial-2       A tutorial introduction to Git: part two
+   workflows        An overview of recommended workflows with Git
+git help tutorial : Open up a git tutor web page.
+-----------------------------------------------
+
+
+git --help -a : List all git commands using -a
+ -a, --all             print all available commands
+    --[no-]external-commands
+                          show external commands in --all
+    --[no-]aliases        show aliases in --all
+    -m, --[no-]man        show man page
+    -w, --[no-]web        show manual in web browser
+    -i, --[no-]info       show info page
+    -v, --[no-]verbose    print command description
+    -g, --guides          print list of useful guides
+    --user-interfaces     print list of user-facing repository, command and file interfaces
+    --developer-interfaces   print list of file formats, protocols and other developer interfaces
+    -c, --config          print all configuration variable names
+
+
+ git help git : Will help you understand how to use what is below.
+
+ git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]
+           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
+           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--no-lazy-fetch]
+           [--no-optional-locks] [--no-advice] [--bare] [--git-dir=<path>]
+           [--work-tree=<path>] [--namespace=<name>] [--config-env=<name>=<envvar>]
+           <command> [<args>]
+
