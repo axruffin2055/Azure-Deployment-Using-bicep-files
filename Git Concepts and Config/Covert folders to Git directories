@@ -1,0 +1,95 @@
+Open Git-bash
+
+mkdir "C:\code\tutor"
+or 
+mkdir -p /c/code/tutor : Create plain folder or directory in c drive.
+cd /c/code/tutor
+ls :Of course \tutor directory will be empty.
+
+git init : Convert directory to Git directory, which create a main branch.
+axruf@axruffin MINGW64 /c/code/tutor (master)
+$ ls -la
+total 4
+drwxr-xr-x 1 axruf 197609 0 Sep 24 21:56 ./
+drwxr-xr-x 1 axruf 197609 0 Sep 24 21:48 ../
+drwxr-xr-x 1 axruf 197609 0 Sep 24 21:56 .git/
+
+axruf@axruffin MINGW64 /c/code/tutor (master)
+$ git status
+On branch master
+No commits yet
+nothing to commit (create/copy files and use "git add" to track)
+
+touch readme.md && devenv readme.md : Open Visual Studio Community and create readme.md file
+or
+code readme.md : Open Visual Studio code and create readme.md file
+
+Readme.md is not being tracked:
+axruf@axruffin MINGW64 /c/code/tutor (master)
+$ git status
+On branch master
+No commits yet
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        readme.md
+nothing added to commit but untracked files present (use "git add" to track)
+
+Made Git track the readme.md file:
+axruf@axruffin MINGW64 /c/code/tutor (master)
+$ git add readme.md
+
+axruf@axruffin MINGW64 /c/code/tutor (master)
+$ git status
+On branch master
+No commits yet
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   readme.md
+
+axruf@axruffin MINGW64 /c/code/tutor (master)
+$ git status
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        new-file1.md,
+        new-file2.md,
+        new-file3.md
+nothing added to commit but untracked files present (use "git add" to track)
+
+git add . :This will track add files created
+
+This shows that one commit has been made.
+axruf@axruffin MINGW64 /c/code/tutor (master)
+$ git log
+commit 530182bfc48511018ad2413d9256da0cefb2f38d (HEAD -> master)
+Author: axruffin <ruffin.biz@outlook.com>
+Date:   Thu Sep 24 22:43:58 2026 -0400
+
+    some comment
+
+This shows a commit on the three files created and tracked
+axruf@axruffin MINGW64 /c/code/tutor (master)
+$ git commit -am "new files added"
+[master 2dab207] new files added
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 new-file1.md,
+ create mode 100644 new-file2.md,
+ create mode 100644 new-file3.md
+
+This shows the two commit with it's commit message.
+axruf@axruffin MINGW64 /c/code/tutor (master)
+$ git log
+commit 2dab20715d1e92614520523f405bcc6f1e59eb82 (HEAD -> master)
+Author: axruffin <ruffin.biz@outlook.com>
+Date:   Thu Sep 24 22:58:25 2026 -0400
+
+    new files added
+
+commit 530182bfc48511018ad2413d9256da0cefb2f38d
+Author: axruffin <ruffin.biz@outlook.com>
+Date:   Thu Sep 24 22:43:58 2026 -0400
+
+    some comment
+
+
+
