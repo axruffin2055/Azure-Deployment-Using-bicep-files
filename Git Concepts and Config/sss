@@ -1,0 +1,31 @@
+It is normal to use the widely compatible legacy ssh keys RSA. And then explicitly  
+specify the bit length of 4096. However, I will be using the ed25519 ssh type keys  
+because it is more secure.  
+
+This is normally your personal workspace or Home or (~)
+axruf@axruffin MINGW64 ~
+$ pwd
+/c/Users/axruf
+Or change directory.
+cd "c:/Users/axruf"  
+
+Check and see if you have ssh keys.
+axruf@axruffin MINGW64 ~
+$ ls -al ~/.ssh
+ls: cannot access '/c/Users/axruf/.ssh': No such file or directory
+
+You need correct email for ssh keys.
+axruf@axruffin MINGW64 ~
+$ git config --global user.email
+ruffin.biz@outlook.com
+
+Check ssh key types. 
+axruf@axruffin MINGW64 ~
+$ ssh -Q key-plain
+ssh-ed25519
+sk-ssh-ed25519@openssh.com
+ecdsa-sha2-nistp256
+ecdsa-sha2-nistp384
+ecdsa-sha2-nistp521
+sk-ecdsa-sha2-nistp256@openssh.com
+ssh-rsa
