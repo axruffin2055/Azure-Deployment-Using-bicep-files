@@ -1,0 +1,63 @@
+axruf@axruffin MINGW64 ~
+$ mkdir github
+
+axruf@axruffin MINGW64 ~
+$ cd github
+
+axruf@axruffin MINGW64 ~/github
+$ pwd
+/c/Users/axruf/github
+
+axruf@axruffin MINGW64 ~/github
+$ git clone git@github.com:axruffin2055/Azure-Deployment-Using-bicep-files.git
+Cloning into 'Azure-Deployment-Using-bicep-files'...
+remote: Enumerating objects: 108, done.
+remote: Counting objects: 100% (108/108), done.
+remote: Compressing objects: 100% (99/99), done.
+remote: Total 108 (delta 53), reused 0 (delta 0), pack-reused 0 (from 0)
+Receiving objects: 100% (108/108), 42.34 KiB | 4.70 MiB/s, done.
+Resolving deltas: 100% (53/53), done.
+axruf@axruffin MINGW64 ~/github
+$ ls -la
+total 16
+drwxr-xr-x 1 axruf 197609 0 Sep 26 16:34 ./
+drwxr-xr-x 1 axruf 197609 0 Sep 26 16:31 ../
+drwxr-xr-x 1 axruf 197609 0 Sep 26 16:34 Azure-Deployment-Using-bicep-files/
+
+axruf@axruffin MINGW64 ~/github
+$ cd Azure-Deployment-Using-bicep-files
+
+axruf@axruffin MINGW64 ~/github/Azure-Deployment-Using-bicep-files (main)
+$ ls -la
+total 40
+drwxr-xr-x 1 axruf 197609    0 Sep 26 16:34  ./
+drwxr-xr-x 1 axruf 197609    0 Sep 26 16:34  ../
+drwxr-xr-x 1 axruf 197609    0 Sep 26 16:34  .git/
+drwxr-xr-x 1 axruf 197609    0 Sep 26 16:34  Bicep-files/
+-rw-r--r-- 1 axruf 197609 1884 Sep 26 16:34 'Create mutiple VMs'
+drwxr-xr-x 1 axruf 197609    0 Sep 26 16:34 'Git Concepts and Config'/
+-rw-r--r-- 1 axruf 197609 1158 Sep 26 16:34  README.md
+-rw-r--r-- 1 axruf 197609 8625 Sep 26 16:34  Secure-secrets-pw-and-sshkey
+-rw-r--r-- 1 axruf 197609 1746 Sep 26 16:34  deploy.bicep
+-rw-r--r-- 1 axruf 197609 1140 Sep 26 16:34  git
+axruf@axruffin MINGW64 ~/github/Azure-Deployment-Using-bicep-files (main)
+$ cd 'Git Concepts and Config'
+
+axruf@axruffin MINGW64 ~/github/Azure-Deployment-Using-bicep-files/Git Concepts and Config (main)
+$ ls -la
+total 40
+drwxr-xr-x 1 axruf 197609     0 Sep 26 16:34  ./
+drwxr-xr-x 1 axruf 197609     0 Sep 26 16:34  ../
+-rw-r--r-- 1 axruf 197609  2111 Sep 26 16:34 'Concept guild (-g, -h [--info-path])'
+-rw-r--r-- 1 axruf 197609  1505 Sep 26 16:34 'Config Git with IDE'
+-rw-r--r-- 1 axruf 197609  2824 Sep 26 16:34 'Covert folders into Git directories'
+-rw-r--r-- 1 axruf 197609 12655 Sep 26 16:34 'Git Commands'
+-rw-r--r-- 1 axruf 197609  2789 Sep 26 16:34 'ssh-keys used with Github'
+
+axruf@axruffin MINGW64 ~/github/Azure-Deployment-Using-bicep-files/Git Concepts and Config (main)
+$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+
