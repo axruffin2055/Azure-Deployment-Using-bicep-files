@@ -1,6 +1,8 @@
+Open git-bash and create a directory.
 axruf@axruffin MINGW64 ~
 $ mkdir github
 
+Change directory
 axruf@axruffin MINGW64 ~
 $ cd github
 
@@ -8,6 +10,8 @@ axruf@axruffin MINGW64 ~/github
 $ pwd
 /c/Users/axruf/github
 
+Clone a repository from GitHub.com. From the GitHub.com select a repository   
+Them Code-> SSH or HTTPS-> Then copy and paste URL
 axruf@axruffin MINGW64 ~/github
 $ git clone git@github.com:axruffin2055/Azure-Deployment-Using-bicep-files.git
 Cloning into 'Azure-Deployment-Using-bicep-files'...
@@ -16,7 +20,8 @@ remote: Counting objects: 100% (108/108), done.
 remote: Compressing objects: 100% (99/99), done.
 remote: Total 108 (delta 53), reused 0 (delta 0), pack-reused 0 (from 0)
 Receiving objects: 100% (108/108), 42.34 KiB | 4.70 MiB/s, done.
-Resolving deltas: 100% (53/53), done.
+Resolving deltas: 100% (53/53), done.  
+
 axruf@axruffin MINGW64 ~/github
 $ ls -la
 total 16
@@ -54,10 +59,73 @@ drwxr-xr-x 1 axruf 197609     0 Sep 26 16:34  ../
 -rw-r--r-- 1 axruf 197609 12655 Sep 26 16:34 'Git Commands'
 -rw-r--r-- 1 axruf 197609  2789 Sep 26 16:34 'ssh-keys used with Github'
 
+Origin/main meaning GitHub is the remote origin where we cloned repository/  
+main is our default tracking branch on our local main branch.
 axruf@axruffin MINGW64 ~/github/Azure-Deployment-Using-bicep-files/Git Concepts and Config (main)
 $ git status
 On branch main
 Your branch is up to date with 'origin/main'.
-
 nothing to commit, working tree clean
+
+I created a new file using Visual Studio, which you can see in the status.
+axruf@axruffin MINGW64 ~/github/Azure-Deployment-Using-bicep-files/Git Concepts and Config (main)
+$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        Using-git-with-Github.txt
+nothing added to commit but untracked files present (use "git add" to track)  
+
+axruf@axruffin MINGW64 ~/github/Azure-Deployment-Using-bicep-files/Git Concepts and Config (main)
+$ git add .
+
+axruf@axruffin MINGW64 ~/github/Azure-Deployment-Using-bicep-files/Git Concepts and Config (main)
+$ ls -la
+total 48
+drwxr-xr-x 1 axruf 197609     0 Sep 26 18:50  ./
+drwxr-xr-x 1 axruf 197609     0 Sep 26 18:46  ../
+drwxr-xr-x 1 axruf 197609     0 Sep 26 18:56  .vs/
+-rw-r--r-- 1 axruf 197609  2111 Sep 26 16:34 'Concept guild (-g, -h [--info-path])'
+-rw-r--r-- 1 axruf 197609  1505 Sep 26 16:34 'Config Git with IDE'
+-rw-r--r-- 1 axruf 197609  2824 Sep 26 16:34 'Covert folders into Git directories'
+-rw-r--r-- 1 axruf 197609 12655 Sep 26 16:34 'Git Commands'
+-rw-r--r-- 1 axruf 197609  2541 Sep 26 18:19  Using-git-with-Github.txt
+-rw-r--r-- 1 axruf 197609  2789 Sep 26 16:34 'ssh-keys used with Github'
+
+axruf@axruffin MINGW64 ~/github/Azure-Deployment-Using-bicep-files/Git Concepts and Config (main)
+$ git commit -m "added a new file"
+[main cc28d1e] added a new file
+ 6 files changed, 110 insertions(+)
+ create mode 100644 Git Concepts and Config/.vs/Git Concepts and Config.slnx/FileContentIndex/0a458821-69b0-420b-8c24-32dc68a115fb.vsidx
+ create mode 100644 Git Concepts and Config/.vs/Git Concepts and Config.slnx/v18/.wsuo
+ create mode 100644 Git Concepts and Config/.vs/Git Concepts and Config.slnx/v18/DocumentLayout.json
+ create mode 100644 Git Concepts and Config/.vs/VSWorkspaceState.json
+ create mode 100644 Git Concepts and Config/.vs/slnx.sqlite
+ create mode 100644 Git Concepts and Config/Using-git-with-Github.txt  
+
+axruf@axruffin MINGW64 ~/github/Azure-Deployment-Using-bicep-files/Git Concepts and Config (main)
+$ git status
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+nothing to commit, working tree clean
+
+Now I am pushing main or local repository to GitHub or origin.
+axruf@axruffin MINGW64 ~/github/Azure-Deployment-Using-bicep-files/Git Concepts and Config (main)
+$ git push origin main
+Enumerating objects: 15, done.
+Counting objects: 100% (15/15), done.
+Delta compression using up to 20 threads
+Compressing objects: 100% (13/13), done.
+Writing objects: 100% (13/13), 22.21 KiB | 1.23 MiB/s, done.
+Total 13 (delta 2), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+To github.com:axruffin2055/Azure-Deployment-Using-bicep-files.git
+   39ecb0f..cc28d1e  main -> main
+
+Check your GitHub.com account and see if the file was pushed  
+into the repository that you cloned. Congrats!!!
+
+
 
