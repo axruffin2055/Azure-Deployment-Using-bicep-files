@@ -1,0 +1,82 @@
+It is normal to use the widely compatible legacy ssh keys RSA. And then explicitly  
+specify the bit length of 4096. However, I will be using the ed25519 ssh type keys  
+because it is more secure.   
+
+Understand the config subcommand on global options
+axruf@axruffin MINGW64 ~
+$ git config --help  
+
+See your global config
+axruf@axruffin MINGW64 ~
+$ git config list
+
+This is normally your personal workspace or Home or (~)
+axruf@axruffin MINGW64 ~
+$ pwd
+/c/Users/axruf
+Or change directory.
+cd "c:/Users/axruf"  
+
+Check and see if you have ssh keys.
+axruf@axruffin MINGW64 ~
+$ ls -al ~/.ssh
+ls: cannot access '/c/Users/axruf/.ssh': No such file or directory
+
+You need correct email for ssh keys.
+axruf@axruffin MINGW64 ~
+$ git config --global user.email
+ruffin.biz@outlook.com
+
+Check ssh key types. 
+axruf@axruffin MINGW64 ~
+$ ssh -Q key-plain
+ssh-ed25519
+sk-ssh-ed25519@openssh.com
+ecdsa-sha2-nistp256
+ecdsa-sha2-nistp384
+ecdsa-sha2-nistp521
+sk-ecdsa-sha2-nistp256@openssh.com
+ssh-rsa
+
+axruf@axruffin MINGW64 ~
+$ ssh-keygen -t ssh-ed25519 -C "ruffin.biz@outlook.com"
+Generating public/private ssh-ed25519 key pair.
+Enter file in which to save the key (/c/Users/axruf/.ssh/id_ed25519):
+
+axruf@axruffin MINGW64 ~
+$ ls -la .ssh/
+total 14
+drwxr-xr-x 1 axruf 197609   0 Sep 26 14:40 ./
+drwxr-xr-x 1 axruf 197609   0 Sep 26 14:39 ../
+-rw-r--r-- 1 axruf 197609 419 Sep 26 14:40 id_ed25519
+-rw-r--r-- 1 axruf 197609 104 Sep 26 14:40 id_ed25519.pub
+
+Check to see if the ssh agent is running.
+axruf@axruffin MINGW64 ~
+$ eval $(ssh-agent -s)
+Agent pid 441
+
+Add private key to ssh agent for authentication.
+axruf@axruffin MINGW64 ~
+$ ssh-add ~/.ssh/id_ed25519
+Identity added: /c/Users/axruf/.ssh/id_ed25519 (ruffin.biz@outlook.com)
+
+Copy and paste your public ssh key to your GitHub.com personal account under SSH and GPG keys.  
+Open web-browser -> www.GitHub.com (log into account)-> click on your picture->  
+click on setting-> SSH and GPG keys  
+Copy and paste public key.
+axruf@axruffin MINGW64 ~
+$ cat .ssh/id_ed25519.pub
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHAlXf2Z8hMF/r6zQHq0NUcvjKgJ1Q30UxzPFb102/Nk ruffin.biz@outlook.com  
+
+axruf@axruffin MINGW64 ~
+$ ssh -T git@github.com
+The authenticity of host 'github.com (140.82.112.3)' can't be established.
+ED25519 key fingerprint is: SHA256:+DiY3wvvV6TuJJhbpZisF/zLDA0zPMSvHdkr4UvCOqU
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added 'github.com' (ED25519) to the list of known hosts.
+Hi axruffin2055! You've successfully authenticated, but GitHub does not provide shell access.
+
+Congratz, you are now authenticated with github.com from your local machine using ssh keys.
+
