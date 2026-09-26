@@ -26,7 +26,9 @@ git config --global core.editor "cmd.exe //C start //wait \"\"
 \"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\devenv.exe\" /Edit"
 
 Open Git-Bash
-git: List commands.  
+Understand the config subcommand.
+axruf@axruffin MINGW64 ~
+$ git config --help 
 git config --global user.name "My name here" : Change user name. 
 git config --global user.email "example.biz@yahoo.com" : Change user email 
 git config --edit --global : Show global settings.
