@@ -1,0 +1,13 @@
+Most time during a application production, a team has to work together and develop that application.
+So the team will create two environments "Development" and "Production". Each person on the team  
+will have their own Development environment and changes to their Development environment will  
+have to be checked before adding those changes to the Production environment. Well, that, my friend,  
+is how branches work in GitHub.com and Git. We can create a snapshot of or from a main branch repository.  
+Then we can work from that created copy of or from that main branch, but all works will be done in the  
+new branch not the main branch. Instead of experimenting, testing added features or fixing bugs in a program  
+in the main branch and then breaking the code in the main branch; one can create a new branch from the  
+traget main branch then perform all experiments and testing in the newly created branch away from the target  
+main branch. To compare our story environments with GitHub and Git...    
+Development environment is our snapshot/copied newly created branch and Production is our main branch.  
+
+
