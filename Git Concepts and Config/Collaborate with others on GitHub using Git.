@@ -1,0 +1,134 @@
+I am using ssh keys to authenticate with GitHub.com.  
+
+Changes were maded on a project but my local repository does not know  
+about the changes someone else has made on the remote repository that is   
+located in GitHub.com.     
+
+Local repository "Git Concepts and Config" does not know about remote updates or changes.  
+axruf@axruffin MINGW64 ~/github/Azure-Deployment-Using-bicep-files/Git Concepts and Config (main)
+$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+nothing to commit, working tree clean  
+
+We have to ask Git to look at the updates/changes that happened in the remote repository.
+Git subcommand "fetch" will peek or put the changes in git's database; but will not  
+merge or place the changes in our local repository. 
+axruf@axruffin MINGW64 ~/github/Azure-Deployment-Using-bicep-files/Git Concepts and Config (main)
+$ git fetch
+Enter passphrase for key '/c/Users/axruf/.ssh/id_ed25519':
+Updating cc28d1e..a7c5346
+remote: Enumerating objects: 12, done.
+remote: Counting objects: 100% (12/12), done.
+remote: Compressing objects: 100% (8/8), done.
+remote: Total 8 (delta 5), reused 0 (delta 0), pack-reused 0 (from 0)
+Unpacking objects: 100% (8/8), 3.69 KiB | 290.00 KiB/s, done.
+From github.com:axruffin2055/Azure-Deployment-Using-bicep-files
+   cc28d1e..a7c5346  main       -> origin/main
+
+Now git status shows that our local branch is behind by 2 commits. Git has also  
+noticed that we do not have any conflicting changes given the remote respository  
+fetched and merged with our local respository on Git's database.
+axruf@axruffin MINGW64 ~/github/Azure-Deployment-Using-bicep-files/Git Concepts and Config (main)
+$ git status
+On branch main
+Your branch is behind 'origin/main' by 2 commits, and can be fast-forwarded.
+  (use "git pull" to update your local branch)
+nothing to commit, working tree clean  
+
+Git subcommand "pull" will merge the romote changes to our local repository.
+axruf@axruffin MINGW64 ~/github/Azure-Deployment-Using-bicep-files/Git Concepts and Config (main)
+$ git pull
+Enter passphrase for key '/c/Users/axruf/.ssh/id_ed25519':
+Fast-forward
+ Git Concepts and Config/Using-git-with-Github.txt | 70 ++++++++++++++++++++++-
+ Git Concepts and Config/ssh-keys used with Github |  7 ++-
+ 2 files changed, 75 insertions(+), 2 deletions(-)
+
+Check and see the changes using your IDE (I am using Visual Studio Community).
+axruf@axruffin MINGW64 ~/github/Azure-Deployment-Using-bicep-files/Git Concepts and Config (main)
+$ devenv Using-git-with-Github.txt  
+
+Made some change to file "Using-git-with-Github.txt" using my IDE.
+axruf@axruffin MINGW64 ~/github/Azure-Deployment-Using-bicep-files/Git Concepts and Config (main)
+$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   Using-git-with-Github.txt
+no changes added to commit (use "git add" and/or "git commit -a")  
+
+Let Git track our changes.
+axruf@axruffin MINGW64 ~/github/Azure-Deployment-Using-bicep-files/Git Concepts and Config (main)
+$ git add .  
+
+Let Git save our changes.
+axruf@axruffin MINGW64 ~/github/Azure-Deployment-Using-bicep-files/Git Concepts and Config (main)
+$ git commit -m "made very small change"
+[main 9eeefac] made very small change
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Git's database repository is in sync with our Local repository.
+axruf@axruffin MINGW64 ~/github/Azure-Deployment-Using-bicep-files/Git Concepts and Config (main)
+$ git status
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+
+!!!Before using git subcommand "push", do not for get to let Git "fetch" and "pull" works   
+or changes that was made on remote repository on GitHub.com!!!!
+axruf@axruffin MINGW64 ~/github/Azure-Deployment-Using-bicep-files/Git Concepts and Config (main)
+$ git push origin main
+Enter passphrase for key '/c/Users/axruf/.ssh/id_ed25519':
+To github.com:axruffin2055/Azure-Deployment-Using-bicep-files.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'github.com:axruffin2055/Azure-Deployment-Using-bicep-files.git'
+hint: Updates were rejected because the remote contains work that you do not
+hint: have locally. This is usually caused by another repository pushing to
+hint: the same ref. If you want to integrate the remote changes, use
+hint: 'git pull' before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+Remeber to fetch (Understand that we do not have to fetch. We can just pull).    
+git subcommand "fetch" acts as a safe gaurd with git subcommands "log" and "diff".
+axruf@axruffin MINGW64 ~/github/Azure-Deployment-Using-bicep-files/Git Concepts and Config (main)
+$ git fetch
+Enter passphrase for key '/c/Users/axruf/.ssh/id_ed25519':
+remote: Enumerating objects: 7, done.
+remote: Counting objects: 100% (7/7), done.
+remote: Compressing objects: 100% (4/4), done.
+remote: Total 4 (delta 3), reused 0 (delta 0), pack-reused 0 (from 0)
+Unpacking objects: 100% (4/4), 1012 bytes | 77.00 KiB/s, done.
+From github.com:axruffin2055/Azure-Deployment-Using-bicep-files
+   a7c5346..5552dd2  main       -> origin/main
+
+Remember to pull (pull will fetch and merge changes). 
+axruf@axruffin MINGW64 ~/github/Azure-Deployment-Using-bicep-files/Git Concepts and Config (main)
+$ git pull
+Enter passphrase for key '/c/Users/axruf/.ssh/id_ed25519':
+Merge made by the 'ort' strategy.
+
+Then push your local changes.
+axruf@axruffin MINGW64 ~/github/Azure-Deployment-Using-bicep-files/Git Concepts and Config (main)
+$ git push
+Enter passphrase for key '/c/Users/axruf/.ssh/id_ed25519':
+Enumerating objects: 2, done.
+Counting objects: 100% (2/2), done.
+Delta compression using up to 20 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (2/2), 368 bytes | 368.00 KiB/s, done.
+Total 2 (delta 1), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (1/1), done.
+
+Great job collaborating with your team mates by using Git and GitHub.com!!!
+
+
+
+
+
+
+
