@@ -28,7 +28,9 @@ git config --global core.editor "cmd.exe //C start //wait \"\"
 Open Git-Bash
 Understand the config subcommand.
 axruf@axruffin MINGW64 ~
-$ git config --help 
+$ git config --help   
+
+Open Git-Bash
 git config --global user.name "My name here" : Change user name. 
 git config --global user.email "example.biz@yahoo.com" : Change user email 
 git config --edit --global : Show global settings.
