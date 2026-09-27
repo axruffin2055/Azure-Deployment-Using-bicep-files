@@ -125,7 +125,7 @@ To github.com:axruffin2055/Azure-Deployment-Using-bicep-files.git
    39ecb0f..cc28d1e  main -> main
 
 Check your GitHub.com account and see if the file was pushed  
-into the repository that you cloned. Congrats!!!
+into the repository that you cloned. Congrats!!!!
 
 
 
