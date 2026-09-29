@@ -10,4 +10,60 @@ traget main branch then perform all experiments and testing in the newly created
 main branch. To compare our story environments with GitHub and Git...    
 Development environment is our snapshot/copied newly created branch and Production is our main branch.  
 
+axruf@axruffin MINGW64 ~/github/Azure-Deployment-Using-bicep-files/Git Concepts and Config (main)
+$ git fetch
+Enter passphrase for key '/c/Users/axruf/.ssh/id_ed25519':
+
+axruf@axruffin MINGW64 ~/github/Azure-Deployment-Using-bicep-files/Git Concepts and Config (main)
+$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+nothing to commit, working tree clean
+
+
+Two way to create a branch of a repository.
+The first way is to use git checkout [branch-name].
+The second way to create a branch is to use git branch [branch-name].
+
+Create a replica of a repository, the copy is named test-branch,  
+and switch to newly created replica branch named test-branch.
+axruf@axruffin MINGW64 ~/github/Azure-Deployment-Using-bicep-files/Git Concepts and Config (main) <----
+$ git checkout test-branch
+We switch branches.
+axruf@axruffin MINGW64 ~/github/Azure-Deployment-Using-bicep-files/Git Concepts and Config (test-branch) <----  
+
+Or  
+
+Create a replica of a repository and the copy is named test-branch.
+axruf@axruffin MINGW64 ~/github/Azure-Deployment-Using-bicep-files/Git Concepts and Config (main) <----
+$ git branch test-branch
+We did not switch branches.
+axruf@axruffin MINGW64 ~/github/Azure-Deployment-Using-bicep-files/Git Concepts and Config (main) <----  
+
+Check different versions of a repository.
+axruf@axruffin MINGW64 ~/github/Azure-Deployment-Using-bicep-files/Git Concepts and Config (main)
+$ git branch -v
+* main        a2b2d7b Rename file for clarity on GitHub collaboration
+  test-branch a2b2d7b Rename file for clarity on GitHub collaboration
+
+Switch to that repository version by name.
+axruf@axruffin MINGW64 ~/github/Azure-Deployment-Using-bicep-files/Git Concepts and Config (main) <-----
+$ git switch test-branch
+Switched to branch 'test-branch'
+Now we can test and experiment in this branch without breaking the code in the main repository.
+axruf@axruffin MINGW64 ~/github/Azure-Deployment-Using-bicep-files/Git Concepts and Config (test-branch) <----
+
+Remember origin is the alias name for the remote repository on GitHub.com.
+axruf@axruffin MINGW64 ~/github/Azure-Deployment-Using-bicep-files/Git Concepts and Config (test-branch)
+$ git remote -v
+origin  git@github.com:axruffin2055/Azure-Deployment-Using-bicep-files.git (fetch)
+origin  git@github.com:axruffin2055/Azure-Deployment-Using-bicep-files.git (push)
+
+We are giving our local repository branch named test-branch the same name over in Github.com.  
+This means "git push origin naruto" will name our local repository named test-branch and 
+now will rename it naruto over in GitHub.com  
+axruf@axruffin MINGW64 ~/github/Azure-Deployment-Using-bicep-files/Git Concepts and Config (test-branch)
+$ git push -u origin test-branch  
+
+Congrats, we have ceated a new branch of an repository. Happy coding!!!!!
 
