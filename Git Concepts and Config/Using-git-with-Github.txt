@@ -59,7 +59,7 @@ drwxr-xr-x 1 axruf 197609     0 Sep 26 16:34  ../
 -rw-r--r-- 1 axruf 197609 12655 Sep 26 16:34 'Git Commands'
 -rw-r--r-- 1 axruf 197609  2789 Sep 26 16:34 'ssh-keys used with Github'
 
-Origin/main meaning GitHub is the remote origin where we cloned repository/  
+Origin/main meaning GitHub.com has the remote origin where we cloned repository/  
 main is our default tracking branch on our local main branch.
 axruf@axruffin MINGW64 ~/github/Azure-Deployment-Using-bicep-files/Git Concepts and Config (main)
 $ git status
