@@ -111,7 +111,14 @@ Your branch is ahead of 'origin/main' by 1 commit.
   (use "git push" to publish your local commits)
 nothing to commit, working tree clean
 
-Now I am pushing main or local repository to GitHub or origin.
+The remote repository is named origin 
+axruf@axruffin MINGW64 ~/github/Azure-Deployment-Using-bicep-files/Git Concepts and Config (main)
+$ git remote -v
+origin  git@github.com:axruffin2055/Azure-Deployment-Using-bicep-files.git (push)
+
+
+I'm pushing my local main branch repository to the GitHub.com main repository branch  
+that is referenced by the name "origin".
 axruf@axruffin MINGW64 ~/github/Azure-Deployment-Using-bicep-files/Git Concepts and Config (main)
 $ git push origin main
 Enumerating objects: 15, done.
