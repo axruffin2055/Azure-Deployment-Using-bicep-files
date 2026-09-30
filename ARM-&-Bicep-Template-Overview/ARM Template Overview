@@ -1,1 +1,117 @@
-Schema: Defines the template version and structure
+Schema: Defines the template rules that Azure deployment has to follow such as JSON format, syntax, structure  
+        and version. The "contentVersion" is a user-defined string that helps track template changes. Not used
+        by Azure, but will be used by the team for version control. Schema versions "2019-04-
+        01" are key to unlocking certain features.    
+Example:  
+{ 
+"$schema": "https://schema.management.azure.com/schemas/2019-04-
+01/deploymentTemplate. json#"
+"contentVersion": "1.0.0.0"
+}  
+
+Parameters: Allow dynamic input, or acts as place holders, values, durning deployment, for reusability.  
+            NO more Hard coded values!!! Example has two parameters, "storageAccountName" and "location".  
+Example:    
+
+"parameters": {
+  "storageAccountName": {
+     "type": "string",
+     "metadata": {
+       "description": "If the user do not add storage account name during deployment, then the default value 
+                       name for the storage account will be created or used."
+    },
+    "defaultValue": "myStorageAccount"
+}
+"location": {
+    "type": "string",
+    "defaultValue": "[resourceGroup() .location]",
+    "metadata": {
+       "description": "Will use function "resourceGroup()" to pull the location of that resource Group and store 
+                       that resource Group location value to the deployed resources created in different templates."  
+    }
+   }
+  }
+
+
+Variables: Computed values for simplicity. Reuse the same logic, complex expressions, by storing that logic in a variable, 
+           then using that variable throughout the template. Define them based on parameters, other variable, or functions.
+Example: 
+
+"variables": {
+'storageAccountType": "Standard_LRS"
+"storageAccountNamePrefix": "[parameters('storageAccountNamePrefix' ) ]",
+"storageAccountName" : "[concat(variables('storageAccountNamePrefix' ), 'sa')]",
+"uniqueId" : "[uniqueString(resourceGroup().id]"
+}
+
+Functions: Provide built-in capabilities on internal logic for data manipulate.
+For the variable "fullResourceName", it is using three functions such as toLower(one argument),  
+parameters(one argument), and concat(argument 1, argument 2)
+Example:  
+
+"variables": {
+"fullResourceName": "[toLower (concat(parameters(' storageAccountName'), '-rg')) ]",
+"newNumber": "[add(parameters(' first'), parameters('second' ) ) ]",
+"arrayElement": "[first(parameters('arrayToTest' )) ]"
+}
+
+User-Defined Functions: Customized functions that are not built-in to ARMs deployment.  
+The namespace is what calls the billing UDF for any function. ex: billing.toUpper().
+Rules for UDF: A UDF requires a dedicated namespace. A UDF cannot have access a variable or other UDF,  
+which means we cannot reference a variable defined elsewhere in the template from within the UDF.  
+Also, UDF can only access parameters defined within the scoped of that UDF, which means that UDF 
+cannot use parameters or parts defined in the main template. 
+Example:  
+
+"functions": [
+  {
+    "namespace": "billing",
+    "members": {
+      "uniqueName": {
+        "parameters": [ {
+          "name": "namePrefix",
+          "type": "string"
+          } ],
+        "output": {
+          "type": "string",
+          "value": "[concat(toLower (parameters('namePrefix')),  
+uniqueString(resourceGroup().id))]"
+} } } } ],
+
+Resources: Declare the infrastructure to be deployed by defining the actual Azure Resource Provider.
+resources[] is deployed as a array object, even if their is only one resource declared.
+Example:  
+
+"resources": [{ <---array start
+  {
+    "type": "Microsoft.Storage/storageAccounts",
+    "apiVersion": "2024-01-01",
+    "name": "[parameters('storageAccountName')]",
+    "location": "[parameters('location')]",
+    "sku": {
+      "name": "Standard_LRS"
+    },
+    "kind": "StorageV2",
+    "properties": {
+      "supportsHttpsTrafficOnly": true
+    }
+  }] <---array end
+
+Outputs: Return deployment values, such as public IP addresses or URLs, for further use. Very handy  
+         for passing values or sharing information to other tools, scripts, or environments after deployments.
+         Outputs let you return specific details about the reources that were deployed such as from our storage  
+         account that we deployed we want the storageAccountUri value. And resourceIds wants a list of   
+         VM resourceID values.
+Example:  
+
+"outputs": {
+  "storageAccountUri": {
+    "type": "string",
+    "value":
+"[reference('Microsoft. Storage/storageAccounts/account') .primaryEndpoints.blob]"
+  },
+  "resourceIds": {
+    "type": "array",
+    "value": "[concat(array(parameters('vmNames')), resourceID())]"
+  }
+}
