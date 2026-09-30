@@ -1,6 +1,6 @@
 # Azure-Deployment-Using-bicep-files
 
-Find Resource Types and it's Property Values.
+### Find Resource Types and it's Property Values.
 https://learn.microsoft.com/en-us/azure/templates/
 
 If you know the resource type, you can go directly to it with the following URL format: /azure/templates/{provider-namespace}/{resource-type}. For example, the SQL database reference content is available at: /azure/templates/microsoft.sql/servers/databases.
