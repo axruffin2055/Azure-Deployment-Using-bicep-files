@@ -3,7 +3,7 @@
 ### Find Resource Types and it's Property Values.
 [ARM/Bicep Templates](https://learn.microsoft.com/en-us/azure/templates/)
 
-If you know the resource type, you can go directly to it with the following URL format: /azure/templates/__{provider-namespace}__/__{resource-type}__. For example, the SQL database reference content is available at: /azure/templates/microsoft.sql/**servers**/**databases**.
+> If you know the resource type, you can go directly to it with the following URL format: /azure/templates/__{provider-namespace}__/__{resource-type}__. For example, the SQL database reference content is available at: /azure/templates/microsoft.sql/**servers**/**databases**.
 
 ### Resource type reference: [Click Here](https://learn.microsoft.com/en-us/azure/governance/resource-graph/reference/supported-tables-resources#resources)
 
