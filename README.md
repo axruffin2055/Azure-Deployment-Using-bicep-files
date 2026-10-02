@@ -1,5 +1,8 @@
 # Azure-Deployment-Using-bicep-files
 
+##Find everything you need using Bicep Modules.
+[Bicep Modules](https://azure.github.io/Azure-Verified-Modules/)
+
 ### Find Resource Types and it's Property Values.
 [ARM/Bicep Templates](https://learn.microsoft.com/en-us/azure/templates/)
 
@@ -22,4 +25,3 @@ Example: @description()
 
 Bicep functions: [Click Here](https://docs.azure.cn/en-us/azure-resource-manager/bicep/bicep-functions)  
 
-# [Bicep Modules](https://azure.github.io/Azure-Verified-Modules/)
