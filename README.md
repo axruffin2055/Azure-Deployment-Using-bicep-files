@@ -20,5 +20,6 @@ Resource type URL: /azure/templates/microsoft.network/virtualnetworks
 Example: @description()  
 [User defined functions](https://docs.azure.cn/en-us/azure-resource-manager/bicep/user-defined-functions)    
 
-Bicep functions: [Click Here](https://docs.azure.cn/en-us/azure-resource-manager/bicep/bicep-functions)
+Bicep functions: [Click Here](https://docs.azure.cn/en-us/azure-resource-manager/bicep/bicep-functions)  
 
+# [Bicep Modules](https://azure.github.io/Azure-Verified-Modules/)
