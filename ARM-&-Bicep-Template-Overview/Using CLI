@@ -1,0 +1,31 @@
+Managing Resource Groups
+az group create -- name MyResourceGroup -- location eastus
+az group list -- output table
+az group show -- name MyResourceGroup
+
+
+Working with Resource Group Deployments
+
+az deployment group create |
+-- name MyDeployment |
+-- resource-group MyResourceGroup |
+-- template-file main.bicep |
+-- parameters @parameters.json
+
+az deployment group list -- resource-group MyResourceGroup
+
+az deployment group show -- name MyDeployment -- resource-group MyResourceGroup
+
+az deployment group delete -- name MyDeployment -- resource-group MyResourceGroup
+
+
+Deployment Parameters: Inline
+Allow passing values directly to the command line using key-value pairs
+Use to specify a small number of parameters or when a parameters file is not needed
+az deployment group create |
+-- resource-group MyResourceGroup \
+-- template-file main.bicep |
+-- parameters accountName='myuniquestorage' sku='Standard_LRS'
+
+
+
