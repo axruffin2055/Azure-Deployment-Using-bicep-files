@@ -1,10 +1,18 @@
-Managing Resource Groups
-az group create -- name MyResourceGroup -- location eastus
-az group list -- output table
-az group show -- name MyResourceGroup
+Managing Resource Groups: 
+Create Resource Group with that resource group's name.
+az group create -- name MyResourceGroup -- location eastus  
 
+List all resource groups in tabular format.
+az group list -- output table  
 
-Working with Resource Group Deployments
+Show detailed infomation on target resource group.
+az group show -- name MyResourceGroup  
+
+Force deletion of a resource type in the target resource group
+az group delete -- name MyResourceGroup -f Microsoft.Compute/virtualMachines -- yes
+
+Working with Resource Group Deployments:
+Every deployment has to have a name.  
 
 az deployment group create |
 -- name MyDeployment |
@@ -12,9 +20,12 @@ az deployment group create |
 -- template-file main.bicep |
 -- parameters @parameters.json
 
-az deployment group list -- resource-group MyResourceGroup
+List all deployments on target resource group.
+az deployment group list -- resource-group MyResourceGroup  
 
+Show detail information on specified deployment.
 az deployment group show -- name MyDeployment -- resource-group MyResourceGroup
+
 
 az deployment group delete -- name MyDeployment -- resource-group MyResourceGroup
 
