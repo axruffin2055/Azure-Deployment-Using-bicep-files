@@ -1,1 +1,46 @@
+Managing Resource Groups:
+Create Resource Group with that resource group's name.
+New-AzResourceGroup -Name "MyResourceGroup" -Location "East US"
+
+List all resource groups in tabular format.
+Get-AzResourceGroup | Format-Table
+
+
+Show detailed infomation on target resource group.
+Get-AzResourceGroup -Name "MyResourceGroup"
+
+Force deletion of a resource type in the target resource group
+Remove-AzResourceGroup
+-Name "MyResourceGroup"
+-ForceDeletionType "Microsoft.Compute/virtualMachines"
+-Force
+
+Working with Resource Group Deployments:
+New-AzResourceGroupDeployment
+-ResourceGroupName "MyResourceGroup"
+-TemplateFile "azuredeploy.bicep"
+-Parameter @{"storageAccountName" = "mystorageaccount"}
+
+List all deployments on target resource group.
+Get-AzResourceGroupDeployment -ResourceGroupName "MyResourceGroup"
+
+Show detail information on specified deployment from target resource group.
+Get-AzResourceGroupDeployment
+-ResourceGroupName "MyResourceGroup"
+-Name "MyDeployment"
+
+Delete deployment record from target resource group, does not delete resources.
+Remove-AzResourceGroupDeployment
+-ResourceGroupName "MyResourceGroup"
+-Name "MyDeployment"
+
+Deployment Parameters: Mixed Methods:
+Allows dynamic and static parameter values to coexist
+Useful when some values require runtime computation or external input while others are fixed
+Good for CI/CD pipelines where parameters are a mix of injected and hardcoded
+New-AzResourceGroupDeployment
+-ResourceGroupName "MyResourceGroup"
+-TemplateFile "template. json"
+-minTlsVersion $(Get-Content -Path c:\param.txt -Raw)
+-tagsArray $tagsArrayParam
 
