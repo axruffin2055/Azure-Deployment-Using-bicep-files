@@ -1,0 +1,37 @@
+param storageAccountName string = 'myStorageAccount'
+param storageAccountCount int = 2
+param location string = resourceGroup().location
+param environment string = 'dev'
+param storageAccountName string = 'sa${environment}01'
+
+
+Bicep Template Resources:
+
+param storageAccountName string = 'myStorageAccount'
+param location string = 'westus2'
+
+resource storageAccount 'Microsoft.Storage/storageAccounts@2024-01-01' = {
+  name: storageAccountName
+  location: location
+  sku: {
+    name: 'Standard_LRS'
+  }
+kind: 'StorageV2'
+  properties: {
+    accessTier: 'Hot'
+    supportsHttpsTrafficOnly: 'true'
+  }
+ }
+
+
+@description: 'The deployment environment (e.g. dev, test, prod).'
+@metadata({
+  businessUnit: 'Finance'
+  contact: 'Data Admins'
+})
+@allowed ([
+  'dev'
+  'test'
+  'prod'
+])
+param environment string = 'dev'
