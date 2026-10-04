@@ -23,20 +23,36 @@ az deployment group create |
 List all deployments on target resource group.
 az deployment group list -- resource-group MyResourceGroup  
 
-Show detail information on specified deployment.
+Show detail information on specified deployment from target resource group.
 az deployment group show -- name MyDeployment -- resource-group MyResourceGroup
 
-
+Delete deployment record from target resource group, does not delete resources.
 az deployment group delete -- name MyDeployment -- resource-group MyResourceGroup
 
 
 Deployment Parameters: Inline
 Allow passing values directly to the command line using key-value pairs
-Use to specify a small number of parameters or when a parameters file is not needed
+Use to specify a small number of parameters or when a parameters file is not needed  
+
 az deployment group create |
 -- resource-group MyResourceGroup \
 -- template-file main.bicep |
 -- parameters accountName='myuniquestorage' sku='Standard_LRS'
+
+
+Deployment Parameters: Mixed Methods
+Enables modular deployments, enabling reuse of configuration files
+Overrides specific values directly or pulling dynamic data from external sources
+Apply environment-specific configurations (via files) while making minor overrides  
+
+az deployment group create |
+-- resource-group MyResourceGroup |
+-- template-file main.bicep |
+-- parameters @storageParams.json |
+-- parameters https://website/extraParams.json |
+-- parameters minTlsVersion='TLS_1.2'
+
+
 
 
 
