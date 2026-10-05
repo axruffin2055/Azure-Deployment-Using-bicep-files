@@ -1,6 +1,10 @@
+Bicep Template Parameters:
+Parameter name must be unique and not shared with variables, resources, etc.
 param storageAccountName string = 'myStorageAccount'
 param storageAccountCount int = 2
 param location string = resourceGroup().location
+
+'storageAccountName' builds a dynamic parameter using the parameter named 'environment'. 
 param environment string = 'dev'
 param storageAccountName string = 'sa${environment}01'
 
@@ -23,7 +27,9 @@ kind: 'StorageV2'
   }
  }
 
-
+Bicep templates can be both reusable and expressive by using decorator @description and @metadata.
+During deployment, the template will prompt user for an environment name. If no name is added for  
+the environment name then 'dev' will be added as default.
 @description: 'The deployment environment (e.g. dev, test, prod).'
 @metadata({
   businessUnit: 'Finance'
