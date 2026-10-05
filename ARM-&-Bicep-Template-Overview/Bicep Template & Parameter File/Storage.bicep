@@ -1,3 +1,5 @@
+@description(This is a storage account template that has parameters)
+
 param storageAccountName string
 param location string
 param skuType string
