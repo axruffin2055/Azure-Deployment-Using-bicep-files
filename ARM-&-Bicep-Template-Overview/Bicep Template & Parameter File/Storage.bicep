@@ -1,4 +1,4 @@
-@description(This is a storage account template that has parameters)
+@description("This is a storage account template that has parameters")
 
 param storageAccountName string
 param location string
