@@ -1,6 +1,6 @@
 @description("This main.bicep file passes parameters to the module.bicep; therefore, module.bicep
               do not need hard coded values.")
-@description("main.bicep file focus on \resource orchestration, while module.bicep focus on resource deployment")
+@description("main.bicep file focus on resource orchestration, while module.bicep focus on resource deployment")
 
 param accountName string = 'devstore'
 param location string = 'westus2'
