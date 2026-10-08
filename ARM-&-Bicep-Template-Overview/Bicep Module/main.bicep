@@ -7,7 +7,8 @@ param location string = 'westus2'
 
 module storageModule './module.bicep' =
 {
-  name: 'storageDeployment'  @description("This is the name of this deployment. Deployment names helps with tracking.")
+  @description("This is the name of this deployment. Deployment names helps with tracking.")
+  name: 'storageDeployment'  
   params: {
     storageAccountName: accountName
     location: location
