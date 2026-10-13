@@ -1,0 +1,20 @@
+##For YAML Arrays/Lists there are two different styles:
+
+#Block style: this YAML own Arrays/Lists style.
+- first item
+- Java
+- third item
+#Flow style: JSON type style and YAML can make use of it.
+[item1, item2, item3]
+
+#Or we can mix Block style (YAML) with Flow style (JSON).
+- item1
+- Block item2
+- [put, flow, style, on, block, style, list]
+
+## Of course there are two mapping style, Mapping Block or Flow style:
+
+
+
+
+
