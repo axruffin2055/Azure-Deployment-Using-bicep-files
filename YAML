@@ -14,7 +14,42 @@
 
 ## Of course there are two mapping style, Mapping Block or Flow style:
 
+#YAML Mapping Block style.
+key: value
+or
+list-as-the-key:           
+- Value-item1
+- value-item2
+- value-item3
+or
+flowlist-key: [Value-item1, Value-item2, Value-item3]
+compare azure resource to YAML Mapping 
+storageAccount:
+  name: mystorageaccount
+  location: eastus
+  sku: Standard_LRS
 
+YAML Mapping Flow style (JSON). 
+{                                 <--object start
+  "list-as-the-key": [
+    "item1",
+    "item2",
+    "item3"
+  ]
+}                                 <--object end
+or
+{
+  Key: value,
+  "data serialization language": yaml,
+  version: 1.2.2
+  [java, python, C#, php]
+}
 
+Scalar are Basic values such as strings, numbers, booleans, dates (Data types):
+name: anthony
+noquotes: scalar without quotes
+quotes: "scalar with quotes"
+single: 'scalar do not like single quotes'
+escape: 
 
 
