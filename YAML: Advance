@@ -1,0 +1,123 @@
+---------------------------------------------------------------------
+                        Multi-line Strings.     
+----------------------------------------------------------------------
+# Two types: Folding and Chomping.
+# Folding: Dealing with new lines in multi-line strings (> and |).
+# Chomping: How to deal with trailing newlines in multi-line strings (nothing, - , or +).
+# Example of Folding indicators for each Chomping: (>, >-, or >+) or (|, |-, or |+).
+
+# Folding indicator with no or nothing Chomping.
+multi-line: >
+Some silly text across multiple lines,
+very important to include some white space:
+
+And some
+more indentation
+And some trailing newlines.
+
+Output
+$ python3 test.py
+{'multi-line': 'Some silly text across multiple lines, very important to include some white spa
+ce:\nAnd some \n more indentation\nAnd some trailing newlines.\n'}
+
+# Folding indicator with (-) Chomping.
+multi-line: >-
+Some silly text across multiple lines,
+very important to include some white space:
+
+And some
+more indentation
+And some trailing newlines.
+
+Output
+$ python3 test.py
+{'multi-line': 'Some silly text across multiple lines, very important to include some white spa
+ce:\nAnd some \n more indentation\nAnd some trailing newlines.}    # \n <----This is gone from this line.
+
+# Folding indicator with (+) Chomping.
+multi-line: >+
+Some silly text across multiple lines,
+very important to include some white space:
+
+And some
+more indentation
+And some trailing newlines.
+
+Output
+$ python3 test.py
+{'multi-line': 'Some silly text across multiple lines, very important to include some white spa
+ce:\nAnd some \n more indentation\nAnd some trailing newlines.\n\n\n\n}    # \n <----This is line has all.
+
+# Folding indicator with no or nothing Chomping.
+# Show every new line as they are placed.
+multi-line: |
+Some silly text across multiple lines,
+very important to include some white space:
+
+And some
+more indentation
+And some trailing newlines.
+
+Output
+$ python3 test.py
+{'multi-line': 'Some silly text across multiple lines, \nvery important to include some white sp
+ace:\n\nAnd some \n more indentation\nAnd some trailing newlines.\n'} 
+
+# (|- and |+) works the same as  (>- and >+).
+
+----------------------------------------------------------------------
+                     YAML Nested Sequences
+----------------------------------------------------------------------
+# Two types: Block style (-) and Flow style []  
+# The key, flow_lists, is Mapping a list of arrays. Array1: [] and Nestting Array: (-)
+# Nestting Array: (-) is the nested part because (-) creates a list inside of a list.  
+
+flow_lists:
+- [yaml, json]
+- [python, javascript]
+
+
+block_lists:
+-
+  - yaml
+  - json
+-
+  - python
+  - javascript
+
+# We mix the two types. Here we have one list with four arrays.
+ 
+mix-list:
+- [programming, coding, scripting]
+- [data serialization, serializing]
+-
+  - programming
+  - coding
+  - scripting
+-
+  - data serialization
+  - serializing
+
+
+----------------------------------------------------------------------
+                     YAML Nested Mappings
+----------------------------------------------------------------------
+# The key, person, is mapping three key pair values (name age and address)
+# The key, address, is mapping five key pair values (streetname, number...).
+# The key, dog, is mapping two key pair values.
+person:
+  name: Maaike
+  age: 30
+  address:
+    streetname: Langstraat
+    number: 1
+    zipcode: 1234AB
+    city: Amsterdam
+    country: The Netherlands
+  dog: {name: Bobby, breed: labradoodle}
+  or
+  dog: {
+         name: Bobby, 
+         breed: labradoodle
+       }
+  
