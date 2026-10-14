@@ -3,7 +3,7 @@
 ----------------------------------------------------------------------
 # Two types: Folding and Chomping.
 # Folding: Dealing with new lines in multi-line strings (> and |).
-# Chomping: How to deal with trailing newlines in multi-line strings (nothing, - , or +).
+# Chomping: How to deal with trailing newlines (\n) in multi-line strings (nothing, - , or +).
 # Example of Folding indicators for each Chomping: (>, >-, or >+) or (|, |-, or |+).
 
 # Folding indicator with no or nothing Chomping.
@@ -120,4 +120,124 @@ person:
          name: Bobby, 
          breed: labradoodle
        }
-  
+
+----------------------------------------------------------------------
+              YAML Combining Sequences (Arrays) and Mappings
+----------------------------------------------------------------------
+# The main key, language has an array or list of items.
+# programming, frontend, backend, and data serialization also has a list of items.
+# The key, languages, is mapping to programming and data serialization.
+# The key, programming, is mapping to frontend and backend.
+
+
+languages :
+  - programming:
+    - frontend:
+      - html
+      - CSS
+      - js
+    - backend:
+      - java
+      - python
+      - c#
+- data serialization:
+  - yaml
+  - json
+
+----------------------------------------------------------------------
+                            YAML Dates
+----------------------------------------------------------------------
+
+timestamp: 2026-10-22T22:19:56.10+02:00
+simple_date: 2026-10-22
+
+# This is telling YAML to give this data a string type.
+not_a_date: !! str 2022-03-22
+
+----------------------------------------------------------------------
+                     YAML Repeated Nodes Merge 
+----------------------------------------------------------------------
+                    No more copy three time and paste.
+            Create an Anchor and reference that Anchor three time.
+----------------------------------------------------------------------
+# YAML Repeated Nodes has an Anchor (&) and a alias (*) that reference that Anchor node
+# by using the name of the Anchor node. Anchor node name (&repeated) and alias (*repeated).
+# We have two key: value-pairs. key has the value, Hi there, and new_key also has the value, Hi there.
+
+key: &repeated Hi there
+new_key: *repeated
+
+# Our Anchor node, &person, has two key: value-pairs, name and age, plus a nested mapping, address.
+# Anchor node, &person, node end at, streetname.
+# The alias, *person, repeats and has the same value as the Anchor node.
+
+person: &person
+  name: Maaike
+  age: 30
+  address:
+    streetname: Langstraat
+    number: 1
+    city: Amsterdam
+    zipcode: 1234AB
+    country: The Netherlands
+
+another_person: *person
+
+
+# another_person has the same values, Maaike and 30, as person.
+# But what if we want to change another_person name.
+
+person: &person
+  name: Maaike
+  age: 30
+
+another_person: *person
+
+# We can do a merge (<<) and repeat using the Anchor.
+# yet_another_person now has a different name and the same age value.
+person: &person
+  name: Maaike
+  age: 30
+
+another_person: *person
+
+yet_another_person: 
+<<: *person
+name: Freda
+
+# For yet_another_person, we changed the name. But we can also add info for this person.
+
+yet_another_person: 
+<<: *person
+name: Freda
+address: { 
+            streetname: YAML streetname, 
+            number: 1 
+         }
+birthday: 1990-01-01
+phone: !! str 061234567
+description: <- We can use Multi-line Strings, folding and chopping to 
+add a description about Freda's phone number. Her number is converted
+into a string because Freda's number can be taken as a octal number.
+
+----------------------------------------------------------------------
+                     YAML Working with Tags
+----------------------------------------------------------------------
+# 2022-03-21 and 20 are converted into a string data type.
+# The other 20 is already a integer, therefore, no need to convert.
+
+no_date: !! str 2022-03-21
+no_number: !! str 20
+unnecessary: !! int 20
+
+Tag	Data type	Example
+| Tag        | Data type                  | Example                          |
+|------------|----------------------------|----------------------------------|
+| !!str      | String (text)              | value: !!str 123                 |
+| !!int      | Integer (whole number)     | value: !!int 42                  |
+| !!float    | Floating-point number      | value: !!float 3.14              |
+| !!bool     | Boolean (true/false)       | value: !!bool true               |
+| !!null     | Null (no value)            | value: !!null null               |
+| !!seq      | Sequence (list/array)      | value: !!seq [red, blue]         |
+| !!map      | Mapping (key-value pairs)  | value: !!map {name: Maaike}      |
+| !!binary   | Binary data                | value: !!binary SGVsbG8=         |
