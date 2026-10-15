@@ -28,9 +28,9 @@ person:
     - fitness
     - jigsaw puzzles
 
------------------------------------------
+---------------------------------------------------------------
                VS JSON
------------------------------------------
+---------------------------------------------------------------
 JSON:
   - Can be parsed with a YAML parser
   - Comments not allowed
@@ -60,3 +60,47 @@ JSON:
          ]
     } 
 }
+
+---------------------------------------------------------------
+                      JSON's Nested Array
+---------------------------------------------------------------
+{
+  "first_name" : "Anthony",
+  "last_name" : "Ruffin",
+  "country" : "USA",
+  "shops" : [
+    {
+      "city" : "Dublin",
+     "amount" : "899"
+    },
+    {
+     "city" : "Cork",
+     "amount" : "121"
+    }
+   ]
+}
+
+
+"first_name" : "Sammy",
+"last_name" : "McAllister",
+"shops" : [
+
+"cities" : [
+{ "city" : "Dublin" },
+{ "city" : "Madrid" }
+
+"amount" : "899"
+
+1,
+
+},
+
+1,
+
+"cities" : [
+{ "city" : "Chicago" },
+{ "city" : "Miami" }
+
+"amount" : "121"
+
+1
