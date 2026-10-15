@@ -19,10 +19,10 @@ Example:
      "metadata": {
        "description": "If the user do not add storage account name during deployment, then the default value 
                        name for the storage account will be created or used."
-    },
+     },
     "defaultValue": "myStorageAccount"
-}
-"location": {
+  }
+  "location": {
     "type": "string",
     "defaultValue": "[resourceGroup() .location]",
     "metadata": {
@@ -33,8 +33,9 @@ Example:
   }
 
 
-Variables: Computed values for simplicity. Reuse the same logic, complex expressions, by storing that logic in a variable, 
-           then using that variable throughout the template. Define them based on parameters, other variable, or functions.
+Variables: Computed values for simplicity. Reuse the same logic, complex expressions, by storing that logic in   
+           a variable, then using that variable throughout the template. Define them based on parameters,  
+           other variable, or functions.
 Example: 
 
 "variables": {
@@ -68,15 +69,18 @@ Example:
     "namespace": "billing",
     "members": {
       "uniqueName": {
-        "parameters": [ {
+        "parameters": [{
           "name": "namePrefix",
           "type": "string"
-          } ],
+          }],
         "output": {
           "type": "string",
           "value": "[concat(toLower (parameters('namePrefix')),  
-uniqueString(resourceGroup().id))]"
-} } } } ],
+                     uniqueString(resourceGroup().id))]"
+        }
+      }
+    }
+   }]
 
 Resources: Declare the infrastructure to be deployed by defining the actual Azure Resource Provider.
 resources[] is deployed as a array object, even if their is only one resource declared.
