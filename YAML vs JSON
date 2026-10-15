@@ -1,0 +1,62 @@
+--------------------------------------------------------------------------------------
+                                   YAML VS JSON
+--------------------------------------------------------------------------------------
+YAML:
+  - Can be parsed with a YAML parser.
+  - Comments with a #.
+  - Objects and lists are denoted with indentation or {} and [].
+  - String quotes are optional, can be double or single.
+  - Root node can be any valid data type
+  - Standard for configuration
+
+# Here we have a person object that is easy to read.
+# We mapping of mappings (person and address).
+# And mappings to a list/array (hobbies).
+
+person:
+  name: Maaike
+  age: 30
+  address:
+    streetname: Langstraat
+    number: 1
+    zipcode: 1234AB
+    city: Amsterdam
+    country: The Netherlands
+  hobbies:
+    - reading
+    - programming
+    - fitness
+    - jigsaw puzzles
+
+-----------------------------------------
+               VS JSON
+-----------------------------------------
+JSON:
+  - Can be parsed with a YAML parser
+  - Comments not allowed
+  - Objects and lists are denoted with and []
+  - String quotes are mandatory, must be double quotes
+  - Root node must be object or list
+  - Standard for APIs
+
+# Notice root node or key, person, is an object.
+
+{     
+    "person": {
+        "name": "Maaike",
+        "age": 30,
+        "address": {
+           "streetname": "Langstraat",
+           "number": 1,
+           "zipcode": "1234AB",
+           "city": "Amsterdam",
+           "country": "The Netherlands"
+          }
+        "hobbies": [
+            "reading",
+            "programming",
+            "fitness",
+            "jigsaw puzzles"
+         ]
+    } 
+}
