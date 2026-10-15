@@ -241,3 +241,41 @@ Tag	Data type	Example
 | !!seq      | Sequence (list/array)      | value: !!seq [red, blue]         |
 | !!map      | Mapping (key-value pairs)  | value: !!map {name: Maaike}      |
 | !!binary   | Binary data                | value: !!binary SGVsbG8=         |
+
+
+----------------------------------------------------------------------
+                        Working with Schemas
+----------------------------------------------------------------------
+
+# Schemas contain the rule of YAML and is used to 
+# validate rule the schemas set on files.
+
+# Schemas are also used to create custom data types and custom 
+# data types can be added with language specific schemas.
+# The preferred default schema to use is the Core schema.
+# When creating a custom schema, reference the Core schema.
+# Default Schema:
+- Failsafe schema
+- JSON schema
+- Core schema   
+
+# Different Schemas. 
+- Programming languages have their own schemas. 
+- These schemas map YAML to their language native data structure.
+
+
+# Under stand how schemas work. If your files are using the Failsafe schema,
+# and in your file you create a boolean mapping (active: true), then your file will treat 
+# that boolean as a string because Failsafe Schema do not have boolean Tag (!!bool: boolean).
+# For boolean mapping (active: true) to work, we need to explicitly call boolean tag (active: !!bool true).
+# Or just use the JSON Schema because it has Failsafe tag and boolean tag.
+
+| Failsafe Schema                       | JSON Schema          |
+| ------------------------------------- | -------------------- |
+| Three tags: string, mapping, sequence | Failsafe tags        |
+| !!str: a string value                 | !!null: a null value |
+| !!map: a mapping                      | !!bool: boolean      |
+| !!seq: a sequence                     | !!int: integer       |
+|                                       | !!float: float       |
+| !! Is shorthand for !<tag:yaml.org,2002:...>                 |                    
+
