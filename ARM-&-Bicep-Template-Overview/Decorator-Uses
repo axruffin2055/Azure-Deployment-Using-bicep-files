@@ -1,0 +1,173 @@
+
+---------------------------------------------------------------------------
+Decorator	                        Purpose
+---------------------------------------------------------------------------
+@description()	                    Documents a declaration
+@secure()	                          Protects supported sensitive parameter values
+@allowed()	                        Restricts parameter values to a list
+@minValue() / @maxValue()	          Constrains integer values
+@minLength() / @maxLength()	        Constrains string or array length
+@metadata()	                        Adds custom metadata
+@discriminator()	                  Identifies variants of a tagged union
+@sealed()	                          Treats likely object-property typos as errors
+@export()	                          Exposes a variable, type, or function for import
+@batchSize()	                      Controls sequential deployment batches
+@retryOn()	                        Retries resource deployment for specified errors
+@onlyIfNotExists()	                Skips creation when a resource already exists
+@nullIfNotFound()	                  Returns null for a missing existing resource
+
+
+---------------------------------------------------------------------------
+Declaration	             Examples of supported decorators
+---------------------------------------------------------------------------
+param	                   @description(), @secure(), @minValue(), @maxValue(), @minLength(), 
+                         @maxLength(), @allowed(), @metadata(), @discriminator(), @sealed()
+
+output	                 @description(), @minValue(), @maxValue(), @minLength(), @maxLength(),
+                         @metadata(), @discriminator(), @sealed(), @secure()
+
+resource	               @description(), @batchSize(), @retryOn(), @onlyIfNotExists(), @nullIfNotFound()
+
+module	                 @description(), @batchSize() 
+
+var	                     @description(), @metadata(), @export()
+
+type	                   @description(), @minValue(), @maxValue(), @minLength(), @maxLength(), 
+                         @metadata(), @discriminator(), @sealed(), @secure(), @export()
+
+func	                   @description(), @metadata(), @export()
+
+---------------------------------------------------------------------------
+Examples:
+---------------------------------------------------------------------------
+Adds a description to the parameter.
+@description('The Azure region where resources will be deployed.')
+param location string = 'eastus'
+
+Documents what the resource does.
+@description('Creates a storage account in Azure.')
+resource storageAccount 'Microsoft.Storage/storageAccounts@2025-06-01' = {
+  name: 'examplestorage123'
+  location: 'eastus'
+  sku: {
+    name: 'Standard_LRS'
+  }
+  kind: 'StorageV2'
+}
+
+Marks a string or object parameter as secure so its value isn't 
+saved in deployment history or logged as a normal parameter value.
+@secure()
+param adminPassword string
+
+Requires instanceCount to be between 1 and 10, inclusive.
+@minValue(1)
+@maxValue(10)
+param instanceCount int = 2
+
+Requires the string to contain between 3 and 20 characters.
+@minLength(3)
+@maxLength(20)
+param storagePrefix string
+
+Restricts the parameter to the listed values.
+@allowed([
+  'eastus'
+  'westus2'
+  'centralus'
+])
+param location string = 'eastus'
+
+Adds custom metadata to the parameter.
+@metadata({
+  purpose: 'Deployment configuration'
+  owner: 'Platform team'
+})
+param environment string = 'dev'
+
+The discriminator tells Bicep which object variant is intended based on kind. 
+This is useful for custom-tagged union types. Use this with an object parameter 
+that has different variants, identified by a property such as kind.
+@discriminator('kind')
+param appConfig {
+  kind: 'web'
+  port: int
+} | {
+  kind: 'worker'
+  queueName: string
+}
+
+Elevates certain warnings about likely misspelled property names to errors. For example, 
+typing locaton instead of location can be treated as an error.
+@sealed()
+param appConfig {
+  name: string
+  location: string
+}
+
+Retries deployment up to 10 times when the specified error code occurs. 
+Use this for transient errors where retrying can help.
+@retryOn(['ResourceNotFound'], 10)
+resource storageAccount 'Microsoft.Storage/storageAccounts@2025-06-01' = {
+  name: 'examplestorage123'
+  location: 'eastus'
+  sku: {
+    name: 'Standard_LRS'
+  }
+  kind: 'StorageV2'
+}
+
+Deploys one storage account at a time instead of deploying all instances in parallel. 
+It applies to resources or modules declared with a for loop.
+param storageNames array = [
+  'examplestorage101'
+  'examplestorage102'
+  'examplestorage103'
+]
+
+@batchSize(1)
+resource storageAccounts 'Microsoft.Storage/storageAccounts@2025-06-01' = [for storageName in storageNames: {
+  name: storageName
+  location: 'eastus'
+  sku: {
+    name: 'Standard_LRS'
+  }
+  kind: 'StorageV2'
+}]
+
+Creates the resource only if it doesn't already exist. If it exists, Azure skips creation and 
+leaves it unchanged. This decorator requires Bicep CLI version 0.38.3 or later.
+@onlyIfNotExists()
+resource storageAccount 'Microsoft.Storage/storageAccounts@2025-06-01' = {
+  name: 'examplestorage123'
+  location: 'eastus'
+  sku: {
+    name: 'Standard_LRS'
+  }
+  kind: 'StorageV2'
+}
+
+For an existing resource, returns null if the resource cannot be 
+found instead of failing the deployment because it is missing.
+@nullIfNotFound()
+resource workspace 'Microsoft.OperationalInsights/workspaces@2023-09-01' existing = {
+  name: 'my-log-workspace'
+}
+output workspaceExists bool = workspace != null
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
