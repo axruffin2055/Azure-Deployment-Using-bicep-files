@@ -27,7 +27,7 @@ resource appServicePlan 'Microsoft.Web/serverfarms@2022-03-01' = {
 }
 
 resource webAppPortal 'Microsoft.Web/sites@2022-03-01' = {
-  name: 'AwesomeApp' //webApps has to have unique name. We will create a dynamic variable above.
+ 
   name: webAppName   //This name will replace the hard coded name: 'AwesomeApp'
   location: location   //this is using a built-in function asigned to this parameter 
                        //(param location string = resourceGroup().location)
@@ -39,7 +39,10 @@ resource webAppPortal 'Microsoft.Web/sites@2022-03-01' = {
       linuxFxVersion: linuxFxVersion
       ftpsState: 'FtpsOnly'
     }
+    //webApps has to have unique name. We will create a dynamic variable above. 
+    appServicePlanId: 'AwesomeAppServicePlan' 
     httpsOnly: true
+    
   }
   identity: {
     type: 'SystemAssigned'

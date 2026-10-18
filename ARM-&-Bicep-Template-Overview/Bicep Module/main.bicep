@@ -1,13 +1,14 @@
-@description("main.bicep file focus on resource orchestration, while module.bicep focus on resource deployment")
-@description("This main.bicep file passes parameters to the module.bicep; therefore, module.bicep
-              do not need hard coded values.")
+/* main.bicep file focus on resource orchestration, while module.bicep focus on resource deployment.
+
+   This main.bicep file passes parameters to the module.bicep; therefore, 
+   module.bicep do not need hard coded values.
+*/
 
 param accountName string = 'devstore'
 param location string = 'westus2'
 
-module storageModule './module.bicep' =
-{
-  @description("This is the name of this deployment. Deployment names helps with tracking.")
+module storageModule './module.bicep' ={
+  //This is the name of this deployment. Deployment names helps with tracking.
   name: 'storageDeployment'  
   params: {
     storageAccountName: accountName

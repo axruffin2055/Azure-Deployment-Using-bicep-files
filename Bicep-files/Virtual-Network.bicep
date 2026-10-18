@@ -1,0 +1,9 @@
+module virtualNetwork 'br/public:avm/res/network/virtual-network:<0.10>' = {
+  params: {
+    // Required parameters
+    name: 'nvnmin001'
+    // Non-required parameters
+    addressPrefixes: [
+      '10.0.0.0/16'
+    ]
+  }
