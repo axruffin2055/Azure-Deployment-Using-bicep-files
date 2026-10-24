@@ -1,0 +1,112 @@
+-----------------------------------------------------------------------------------------
+              I am using the terminal in Visual Studio Code (VScode)
+-----------------------------------------------------------------------------------------
+
+Never type user name and password to login to Azure!!!!!!
+PS C:\Users\axruf\github\Azure-Deployment-Using-bicep-files\Bicep-files> az login 
+
+Use the (-h) to help you learn az subcommands.
+PS C:\Users\axruf\github\Azure-Deployment-Using-bicep-files\Bicep-files> az deployment -h
+
+Group
+    az deployment : Manage Azure Resource Manager template deployment at subscription scope.
+
+Subgroups:
+    group     : Manage Azure Resource Manager template deployment at resource group.
+    mg        : Manage Azure Resource Manager template deployment at management group.
+    operation : Manage deployment operations at subscription scope.
+    sub       : Manage Azure Resource Manager template deployment at subscription scope.
+    tenant    : Manage Azure Resource Manager template deployment at tenant scope.
+
+Now using the (-h) to help learn deployment subcommands.
+PS C:\Users\axruf\github\Azure-Deployment-Using-bicep-files\Bicep-files> az deployment group -h
+
+Group
+    az deployment group : Manage Azure Resource Manager template deployment at resource group.
+
+Commands:
+    cancel   : Cancel a deployment at resource group.
+    create   : Start a deployment at resource group.
+    delete   : Delete a deployment at resource group.
+    export   : Export the template used for a deployment.
+    list     : List deployments at resource group.
+    show     : Show a deployment at resource group.
+    validate : Validate whether a template is valid at resource group.
+    wait     : Place the CLI in a waiting state until a deployment condition is met.
+    what-if  : Execute a deployment What-If operation at resource group scope.
+
+Query information in a table format.
+PS C:\Users\axruf\github\Azure-Deployment-Using-bicep-files\Bicep-files> az account show --query "{subscription:name, subscriptionId:id, tenant:tenantId}" --output table
+
+Deploy the Bicep template.
+PS C:\Users\axruf\github\Azure-Deployment-Using-bicep-files\Bicep-files> az deployment group create -g Demo1 -f deployment-test.bicep
+
+If you get an error on this deployment because your subscription is a free tier account... (Upgade to pay-as-you-go)
+PS C:\Users\axruf\github\Azure-Deployment-Using-bicep-files> az deployment operation group list `
+>>   --resource-group Demo1 `
+>>   --name deployment-test `
+>>   --query "[].{Resource:properties.targetResource.resourceName, Type:properties.targetResource.resourceType, State:properties.provisioningState, Error:properties.statusMessage}" `
+>>   --output json
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
