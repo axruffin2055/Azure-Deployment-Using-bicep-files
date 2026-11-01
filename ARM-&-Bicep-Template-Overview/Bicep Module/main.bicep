@@ -7,7 +7,7 @@
 param accountName string = 'devstore'
 param location string = 'westus2'
 
-module storageModule './module.bicep' ={
+module storageModule './module.bicep' = {
   //This is the name of this deployment. Deployment names helps with tracking.
   name: 'storageDeployment'  
   params: {
