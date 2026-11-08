@@ -52,6 +52,11 @@ az deployment group create |
 -- parameters https://website/extraParams.json |
 -- parameters minTlsVersion='TLS_1.2'
 
+or
+
+Just deploy a module
+az deployment group create -g demo2 -f main.bicep
+
 
 
 
